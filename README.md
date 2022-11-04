@@ -19,9 +19,4 @@ docker-compose -f "docker-compose.yml" up -d --build
 
 ## Vídeo Aula
 
-Para entender melhor o código desse repositório e nossas explicações sobre o design pattern *Strategy* no Youtube é só assistir [nosso vídeo no Código Fonte TV](https://youtu.be/WPdrnuSHAQs).
-
-## Autores
-
-* **Gabriel Froes** - [Twitter](https://www.twitter.com/gabrielfroes)
-* **Vanessa Weber** - [Twitter](https://www.twitter.com/nessaweberfroes)
+Para entender melhor o código desse repositório assistir [vídeo no Código Fonte TV](https://youtu.be/WPdrnuSHAQs).
