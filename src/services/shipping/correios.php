@@ -2,13 +2,13 @@
 
 class Correios{
 
-    function calculaRemessa($servico, $peso){
+    function calculateShipping($service, $weight){
         $valor = 0;
 
-        if ($servico == "PAC")
+        if ($service == "PAC")
             $valor = 10;
         
-        else if ($servico == "SEDEX")
+        else if ($service == "SEDEX")
             $valor = 30;
         
 

@@ -2,7 +2,7 @@
 
 class MercadoEnvio {
 
-    function calcula($peso) {
+    function calculate($weight) {
         $total = 1.99;
         return $total;
     }

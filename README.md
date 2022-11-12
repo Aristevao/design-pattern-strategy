@@ -1,9 +1,9 @@
 # Aplicação do Design Pattern STRATEGY
 
 Esse é apenas um exemplo prático de como identificar e aplicar o padrão de projeto *Strategy*.
-Simulamos nesse exemplo um pedaço de uma Loja Virtual em que teria algumas libs externas para cálculo de frete de algumas empresas como: Correios, Fedex, DHL, TNT e etc.
+Simulamos nesse exemplo um pedaço de uma Loja Virtual em que teria algumas libs externas para cálculo de shipping de algumas empresas como: Correios, Fedex, DHL, TNT e etc.
 
-**Aviso:** Importante frisar que o cálculo do frete não é real em nosso exemplo e serve apenas para ilustração.
+**Aviso:** Importante frisar que o cálculo do shipping não é real em nosso exemplo e serve apenas para ilustração.
 
 Nesse projeto estamos utilizando a linguagem PHP porém o conceito pode ser aplicado a qualquer linguagem com suporte ao paradigma de orientação a objetos.
 

@@ -1,6 +1,6 @@
 <?php
 
-include_once "services/frete.php";
+include_once "services/shipping.php";
 
 // ---- Client ----
 // The client code picks a concrete strategy and passes it to
@@ -10,11 +10,11 @@ $sedex = new \Services\Sedex();
 $dhl = new \Services\DHL();
 $me = new \Services\MercadoEnvio();
 
-$frete = new \Services\Frete($sedex); // Pick SEDEX by constructor.
-echo $frete->calcula(10);
+$shipping = new \Services\Shipping($sedex); // Pick SEDEX by constructor.
+echo $shipping->calculate(10);
 
-$frete->setServico($dhl); // Pick DHL by setter.
-echo '<br>' . $frete->calcula(10);
+$shipping->setService($dhl); // Pick DHL by setter.
+echo '<br>' . $shipping->calculate(10);
 
-$frete->setServico($me);
-echo '<br>' . $frete->calcula(10);
+$shipping->setService($me);
+echo '<br>' . $shipping->calculate(10);

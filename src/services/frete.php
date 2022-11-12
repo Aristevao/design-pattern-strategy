@@ -15,82 +15,82 @@ include_once "shipping/mercadoenvio.php";
 // supported versions of some algorithm. The context uses this
 // interface to call the algorithm defined by the concrete
 // strategies.
-interface FreteServico {
-    function calcula(float $peso): float;
+interface ShippingService {
+    function calculate(float $weight): float;
 }
 
 // ---- Concrete Strategy ----
 // Concrete strategies implement the algorithm while following
 // the base strategy interface. The interface makes them
 // interchangeable in the context.
-class Sedex implements FreteServico {
-    function calcula(float $peso): float {
+class Sedex implements ShippingService {
+    function calculate(float $weight): float {
         $correios = new \Correios();
-        $valorTotal = $correios->calculaRemessa("SEDEX", $peso);
-        return $valorTotal;
+        $totalCost = $correios->calculateShipping("SEDEX", $weight);
+        return $totalCost;
     }
 }
 
-class PAC implements FreteServico {
-    function calcula(float $peso): float {
+class PAC implements ShippingService {
+    function calculate(float $weight): float {
         $correios = new \Correios();
-        $valorTotal = $correios->calculaRemessa("PAC", $peso);
-        return $valorTotal;
+        $totalCost = $correios->calculateShipping("PAC", $weight);
+        return $totalCost;
     }
 }
 
-class JadLog implements FreteServico {
-    function calcula(float $peso): float {
-        return  calculaFreteJadLog($peso);
+class JadLog implements ShippingService {
+    function calculate(float $weight): float {
+        return  calculateJadLogShipping($weight);
     }
 }
 
-class DHL implements FreteServico {
-    function calcula(float $peso): float {
+class DHL implements ShippingService {
+    function calculate(float $weight): float {
         $dhl = new \DHL();
-        $valorTotal = $dhl->priceCalculator($peso);
-        return $valorTotal;
+        $totalCost = $dhl->priceCalculator($weight);
+        return $totalCost;
     }
 }
 
-class Fedex implements FreteServico {
-    function calcula(float $peso): float {
+class Fedex implements ShippingService {
+    function calculate(float $weight): float {
         $dhl = new \DHL();
-        $valorTotal = $dhl->priceCalculator($peso);
-        return $valorTotal;
+        $totalCost = $dhl->priceCalculator($weight);
+        return $totalCost;
     }
 }
 
-class TNT implements FreteServico {
-    function calcula(float $peso): float {
+class TNT implements ShippingService {
+    function calculate(float $weight): float {
         $tnt = new \TNT();
-        $valorTotal = $tnt->shippingPriceCalculator("PAC", $peso);
-        return $valorTotal;
+        $totalCost = $tnt->shippingPriceCalculator("PAC", $weight);
+        return $totalCost;
     }
 }
-class MercadoEnvio implements FreteServico {
-    function calcula(float $peso): float {
+class MercadoEnvio implements ShippingService {
+    function calculate(float $weight): float {
         $tnt = new \MercadoEnvio();
-        $valorTotal = $tnt->calcula($peso);
-        return $valorTotal;
+        $totalCost = $tnt->calculate($weight);
+        return $totalCost;
     }
 }
 
 // ---- Context ----
 // The context defines the interface of interest to clients.
-class Frete {
-    private $servico;
+class Shipping {
+    private $service;
 
-    function __construct(FreteServico $servico) {
-        $this->servico = $servico;
+    function __construct(ShippingService $service) {
+        $this->service = $service;
     }
 
-    public function calcula(float $peso) {
-        $valorTotal = $this->servico->calcula($peso);
-        return $valorTotal;
+    public function calculate(float $weight) {
+        $totalCost = $this->service->calculate($weight);
+        return $totalCost;
     }
 
-    function setServico(FreteServico $servico) {
-        $this->servico = $servico;
+    function setService(ShippingService $service) {
+        $this->service = $service;
     }
 }

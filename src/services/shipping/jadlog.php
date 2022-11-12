@@ -1,6 +1,6 @@
 <?php 
 
-function calculaFreteJadLog($peso){
+function calculateJadLogShipping($weight){
     $valor = 4.99;      
     return $valor;
 }
